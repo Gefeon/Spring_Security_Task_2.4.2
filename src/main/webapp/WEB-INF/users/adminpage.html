@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+
+<body>
+<div class="container align-content-center">
+    <h2 class="text-center">Admin Page</h2>
+    <div class="row align-items-center">
+        <div class="col-lg-4 md-5 offset-4">
+            <div>
+                <table border="1">
+                    <tr>
+                        <th colspan="2">ID</th>
+                        <th colspan="2">NAME</th>
+                        <th colspan="2">SURNAME</th>
+                        <th colspan="2">AGE</th>
+                        <th colspan="3">PHONE</th>
+                        <th colspan="2">USERNAME</th>
+                        <th></th>
+                    </tr>
+                    <tr th:each="user : ${allUsers}">
+                        <td><a th:href="@{/user/{id}(id=${user.id})}">[[${user.getId()}]]</a></td>
+                        <td colspan="2" th:text="${user.name}">NAME</td>
+                        <td colspan="2" th:text="${user.surname}">SURNAME</td>
+                        <td colspan="2" th:text="${user.age}">AGE</td>
+                        <td colspan="3" th:text="${user.phoneNumber}">PHONE</td>
+                        <td colspan="3" th:text="${user.username}">USERNAME</td>
+                        <td>
+                            <form th:action="@{/admin/edit/{id}(id=${user.id})}">
+                                <button type="hidden" value="Edit" name="id"><i
+                                        class="material-icons button edit">EDIT</i>
+                                </button>
+                            </form>
+                            <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()})}">
+                                <input type="submit" value="DELETE">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <br/>
+                <form th:action="@{/admin/add.html}">
+                    <button type="hidden" value="add" name="id"><i class="material-icons button edit">ADD NEW USER</i>
+                    </button>
+                </form>
+                <form th:action="@{/logout}">
+                    <button type="hidden" value="logout" name="id"><i class="material-icons button edit">LOGOUT</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

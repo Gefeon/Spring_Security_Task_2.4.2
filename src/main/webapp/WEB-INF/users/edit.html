@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User editor page</title>
+</head>
+
+<body>
+<div class="container align-content-center">
+    <h2 class="text-center">User editor page</h2>
+    <div class="row align-items-center">
+        <div class="col-lg-4 md-5 offset-4">
+            <div>
+                <form th:action="@{/admin/edit}" th:object="${user}" method="post" accept-charset="utf-8">
+                    <table>
+                        <tr>
+                            <td>Id:</td>
+                            <td><input type="text" th:field="*{id}" placeholder="ID" required></td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td><input type="text" th:field="*{name}" placeholder="Name" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Surname:</td>
+                            <td><input type="text" th:field="*{surname}" placeholder="Surname" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Age:</td>
+                            <td><input type="text" th:field="*{age}" placeholder="Age" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Phone number:</td>
+                            <td><input type="text" th:field="*{phoneNumber}" placeholder="Enter +79998887766"
+                                       required/></td>
+                        </tr>
+                        <tr>
+                            <td>Username:</td>
+                            <td><input type="text" th:field="*{username}" placeholder="Username" required/></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td><input type="text" th:field="*{password}" placeholder="Password" required/></td>
+                        </tr>
+                        <input type="checkbox" name="roleStatus" value="ROLE_USER"/>USER role
+                        <input type="checkbox" name="roleStatus" value="ROLE_ADMIN"/>ADMIN role
+                        <br/>
+                    </table>
+                    <br/>
+                    <td><input type="submit" value="EDIT"></td>
+                    <br/>
+                    <br/>
+                    <form th:action="@{/logout}">
+                        <button type="hidden" value="logout" name="id"><i class="material-icons button edit">LOGOUT</i>
+                        </button>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
