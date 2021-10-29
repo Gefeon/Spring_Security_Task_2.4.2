@@ -2,6 +2,7 @@ package mvc.dao;
 
 import mvc.model.User;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -41,7 +42,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserByUsername(String username) {
-        return entityManager.createQuery("select u from User u where u.username=:username",
-                User.class).setParameter("username", username).getSingleResult();
+        return entityManager
+                .createQuery("select u from User u where u.username = :username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
     }
 }

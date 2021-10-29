@@ -49,7 +49,7 @@ public class InitUsers {
         admin.setRoles(adminRoles);
         userService.addUser(admin);
 
-        user.setUsername("USER");
+        user.setUsername("USER2");
         user.setPassword("user");
         user.setName("Petr");
         user.setSurname("Petrov");

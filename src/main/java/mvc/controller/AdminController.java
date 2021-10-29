@@ -25,14 +25,14 @@ public class AdminController {
     }
 
     @GetMapping("/")
-    public String loginPage() {
+    public String startPage() {
         return "redirect:/login";
     }
 
     @GetMapping(value = "/admin")
     public String getUsers(Model model) {
         model.addAttribute("allUsers", userService.listUsers());
-        return "adminpage";
+        return "admin";
     }
 
     @GetMapping(value = "/admin/add")

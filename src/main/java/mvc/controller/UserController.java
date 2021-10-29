@@ -20,13 +20,15 @@ public class UserController {
     @GetMapping(value = "/user")
     public String userInfo(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", user);
-        return "userpage";
+        model.addAttribute("roles", user.getRoles());
+        return "user";
     }
 
     @GetMapping(value = "/user/{id}")
     public String userInfoById(@PathVariable("id") long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
-        return "userpage";
+        model.addAttribute("roles", user.getRoles());
+        return "user";
     }
 }

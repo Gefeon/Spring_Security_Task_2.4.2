@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
@@ -25,14 +26,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.addUser(user);
     }
 
     @Override
-    @Transactional
     public void editUser(User editUser) {
         if (!editUser.getPassword().equals(getUserById(editUser.getId()).getPassword())) {
             editUser.setPassword(passwordEncoder.encode(editUser.getPassword()));
@@ -41,19 +40,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public void deleteUser(long id) {
         userDao.deleteUser(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public User getUserById(Long id) {
         return userDao.getUserById(id);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<User> listUsers() {
         return userDao.listUsers();
     }

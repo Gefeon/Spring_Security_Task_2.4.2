@@ -37,8 +37,10 @@
                         <td>Password:</td>
                         <td><input type="text" th:field="*{password}" placeholder="Password" required/></td>
                     </tr>
-                    <input type="checkbox" name="roleStatus" value="ROLE_USER"/>USER role
-                    <input type="checkbox" name="roleStatus" value="ROLE_ADMIN"/>ADMIN role
+                    <tr>
+                        <td><input type="checkbox" name="roleStatus" value="ROLE_USER"/>USER role</td>
+                        <td><input type="checkbox" name="roleStatus" value="ROLE_ADMIN"/>ADMIN role</td>
+                    </tr>
                     <br/>
                 </table>
                 <br/>
